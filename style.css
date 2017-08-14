@@ -50,7 +50,7 @@ header .wrapper {
   flex-flow: column nowrap;
   align-items: center;
   text-decoration: none;
-  transition: all 0.1s;
+  transition: transform 0.1s, box-shadow 0.1s;
   color: #444;
 }
 
