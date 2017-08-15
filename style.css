@@ -10,20 +10,14 @@ body {
   font-family: 'PT Sans', sans-serif;
 }
 
-header {
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2)
-}
+
 
 .wrapper {
-  max-width: 1270px;
   padding: 15px;
   margin: 0 auto;
 }
 
-header .wrapper {
-  display: flex;
-}
+
 
 .cards {
   display: flex;
@@ -34,7 +28,6 @@ header .wrapper {
 
 .card-wrapper {
   width: calc(100% / 6);
-  /* Height is set to be equal to width with JS */
   padding: 0 7.5px 15px 7.5px;
   display: flex;
 }
@@ -42,6 +35,7 @@ header .wrapper {
 .card {
   background-color: white;
   width: 100%;
+  /* Height is set to be equal to width with JS */
   padding: 25px 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -66,29 +60,13 @@ header .wrapper {
   text-align: center;
 }
 
-.logo {
-  width: 80px;
-  height: 80px;
-  margin-right: 10px;
-  border-radius: 50%;
-}
 
-h1 {
-  font-size: 38px;
-}
-
-.tagline {
-  color: #777;
-  font-size: 18px;
-}
 
 
 
 
 /* SVG */
 .svg-icon {
-  width: 110px;
-  height: 90px;
   fill: #555;
 }
 
@@ -128,39 +106,155 @@ h1 {
 
 
 
-/* Responsive sizing */
-@media (max-width: 1210px) {
-  .headline {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
+/* RESPONSIVE SIZING */
+.wrapper { max-width: 1500px; }
 
-  .svg-icon {
-    width: 100px;
-    height: 80px;
-  }
+/* Large content size */
+.headline { font-size: 30px; }
+.svg-icon { width: 120px; height: 100px; }
+
+@media (max-width: 1340px) {
+  .wrapper { max-width: 1270px; }
+  /* Normal content size */
+  .headline { font-size: 26px; }
+  .svg-icon { width: 110px; height: 90px; }
+}
+
+@media (max-width: 1210px) {
+  /* Small content size */
+  .headline { font-size: 22px; }
+  .svg-icon { width: 100px; height: 80px; }
 }
 
 @media (max-width: 1080px) {
-  .card-wrapper {
-    width: calc(100% / 5);
-  }
+  .card-wrapper { width: calc(100% / 4); }
+  .wrapper { max-width: 900px; }
+
+  /* Normal content size */
+  .headline { font-size: 26px; }
+  .svg-icon { width: 110px;  height: 90px; }
 }
 
-@media (max-width: 950px) {
+@media (max-width: 850px) {
+  /* Small content size */
+  .headline { font-size: 22px; }
+  .svg-icon { width: 100px; height: 80px; }
+  .wrapper {
+    padding: 10px;
+  }
+
   .card-wrapper {
-    width: calc(100% / 4);
+    padding: 0 5px 10px 5px;
   }
 }
 
 @media (max-width: 740px) {
-  .card-wrapper {
-    width: calc(100% / 3);
-  }
+  .card-wrapper { width: calc(100% / 3); }
+  .wrapper { max-width: 680px; }
+  .card { padding: 25px 15px; }
+
+  /* Normal content size */
+  .headline { font-size: 26px; }
+  .svg-icon { width: 110px;  height: 90px; }
+}
+
+@media (max-width: 630px) {
+  /* Small content size */
+  .headline { font-size: 22px; }
+  .svg-icon { width: 100px; height: 80px; }
+}
+
+@media (max-width: 550px) {
+  /* Tiny content size */
+  .headline { font-size: 20px; }
+  .svg-icon { width: 80px; height: 60px; }
 }
 
 @media (max-width: 490px) {
-  .card-wrapper {
-    width: calc(100% / 2);
+  .card-wrapper { width: calc(100% / 2); }
+
+  /* Large content size */
+  .headline { font-size: 30px; }
+  .svg-icon { width: 120px; height: 100px; }
+}
+
+@media (max-width: 440px) {
+  /* Normal content size */
+  .headline { font-size: 26px; }
+  .svg-icon { width: 110px;  height: 90px; }
+}
+
+@media (max-width: 400px) {
+  .wrapper {
+    padding: 10px;
   }
+
+  .card-wrapper {
+    padding: 0 5px 10px 5px;
+  }
+
+  /* Small content size */
+  .headline { font-size: 22px; }
+  .svg-icon { width: 100px; height: 80px; }
+}
+
+@media (max-width: 350px) {
+  /* Tiny content size */
+  .headline { font-size: 20px; }
+  .svg-icon { width: 90px; height: 70px; }
+}
+
+
+/* HEADER */
+header .wrapper {
+  display: flex;
+}
+
+header {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2)
+}
+
+.brand {
+  font-size: 38px;
+}
+
+.tagline {
+  color: #777;
+  font-size: 18px;
+}
+
+.logo {
+  width: 65px;
+  height: 65px;
+  margin-right: 10px;
+  /*border-radius: 50%;*/
+}
+
+.header-content {
+  position: relative;
+  top: -5px;
+}
+
+@media (max-width: 740px) {
+  .tagline {
+    display: none;
+  }
+
+  .logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .brand {
+    font-size: 30px;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    top: 0;
+  }
+
+
 }
