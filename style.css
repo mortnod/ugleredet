@@ -208,6 +208,7 @@ body {
 /* HEADER */
 header .wrapper {
   display: flex;
+  padding: 10px 15px;
 }
 
 header {
