@@ -278,7 +278,6 @@ header {
   max-width: 500px;
   border-radius: 5px;
   box-shadow: 0 0 4px rgba(0,0,0,.7);
-  transition: all 0.2 s;
   text-align: center;
 }
 

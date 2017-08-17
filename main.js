@@ -1,3 +1,52 @@
+/* HELPER FUNCTIONS */
+function hasClass(el, className) {
+  if (el.classList)
+    return el.classList.contains(className)
+  else
+    return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'))
+}
+
+function addClass(el, className) {
+  if (el.classList)
+    el.classList.add(className)
+  else if (!hasClass(el, className)) el.className += " " + className
+}
+
+function removeClass(el, className) {
+  if (el.classList)
+    el.classList.remove(className)
+  else if (hasClass(el, className)) {
+    var reg = new RegExp('(\\s|^)' + className + '(\\s|$)')
+    el.className=el.className.replace(reg, ' ')
+  }
+}
+
+function fadeOut(el){
+  el.style.opacity = 1;
+
+  (function fade() {
+    if ((el.style.opacity -= .1) < 0) {
+      el.style.display = "none";
+    } else {
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+
+function fadeIn(el, display){
+  el.style.opacity = 0;
+  el.style.display = display || "block";
+
+  (function fade() {
+    var val = parseFloat(el.style.opacity);
+    if (!((val += .1) > 1)) {
+      el.style.opacity = val;
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+
+/* ACTUAL FUNCTIONS */
 function resizeCardHeight() {
   cards = document.getElementsByClassName('card')
 
@@ -42,18 +91,21 @@ function activateModal() {
 
   // When the user clicks the button, open the modal
   open_button.onclick = function() {
-    modal.style.display = "block";
+    // addClass(modal, 'modal-visible');
+    fadeIn(modal);
   }
 
   // When the user clicks the close_button, close the modal
   close_button.onclick = function() {
-    modal.style.display = "none";
+    // removeClass(modal, 'modal-visible');
+    fadeOut(modal);
   }
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+      // removeClass(modal, 'modal-visible');
+      fadeOut(modal);
     }
   }
 }
