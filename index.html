@@ -155,10 +155,10 @@
       </svg>
       <div class="header-content">
         <!-- <p class="tagline">Alt du trenger som student... bortsett fra kaffe</p> -->
-        <p class="red-text">Du + UiO =</p>
+        <p class="red-text">Du + UiO</p>
         <h1 class="brand">DUiO</h1>
       </div>
-      <svg class="svg-icon icon-info open-modal-button" id="open_modal_button">
+      <svg class="svg-icon icon-info open-modal-button" id="open_info_modal_button">
         <g fill-rule="nonzero">
           <use xlink:href="#icon-info" class="svg-fill" fill-rule="evenodd"></use>
           <use xlink:href="#icon-info" class="svg-inner-shadow" fill-opacity="1"></use>
@@ -170,7 +170,7 @@
   <main class="wrapper">
     <div class="cards">
       <div class="card-wrapper">
-        <a href="https://fronter.uio.no" class="card">
+        <a href="https://fronter.uio.no" class="card" id="js-track-fronter">
           <h2 class="headline">Fronter</h2>
           <svg class="svg-icon icon-blackboard">
             <g fill-rule="nonzero">
@@ -181,7 +181,7 @@
         </a>
       </div>
       <div class="card-wrapper">
-        <a href="https://mail.uio.no/" class="card">
+        <a href="https://mail.uio.no/" class="card" id="js-track-email">
           <h2 class="headline">Epost</h2>
           <svg class="svg-icon icon-email">
             <g fill-rule="nonzero">
@@ -192,7 +192,7 @@
         </a>
       </div>
       <div class="card-wrapper">
-        <a href="https://studentweb.uio.no/" class="card">
+        <a href="https://studentweb.uio.no/" class="card" id="js-track-studentweb">
           <h2 class="headline">Studentweb</h2>
           <svg class="svg-icon icon-student">
             <g fill-rule="nonzero">
@@ -203,7 +203,7 @@
         </a>
       </div>
       <div class="card-wrapper">
-        <a href="https://www.uio.no/tjenester/it/maskin/o365/sjekkSamtykke.php" class="card">
+        <a href="https://www.uio.no/tjenester/it/maskin/o365/sjekkSamtykke.php" class="card" id="js-track-office365">
           <h2 class="headline">Office 365</h2>
           <svg class="svg-icon icon-office365">
             <g fill-rule="nonzero">
@@ -214,7 +214,7 @@
         </a>
       </div>
       <div class="card-wrapper">
-        <a href="https://minestudier.uio.no/nb/student/index.html" class="card">
+        <a href="https://minestudier.uio.no/nb/student/index.html" class="card" id="js-track-schedule">
           <h2 class="headline">Timeplan</h2>
           <svg class="svg-icon icon-schedule">
             <g fill-rule="nonzero">
@@ -225,7 +225,7 @@
         </a>
       </div>
       <div class="card-wrapper">
-        <a href="https://utskrift.uio.no/" class="card">
+        <a href="https://utskrift.uio.no/" class="card" id="js-track-print">
           <h2 class="headline">Utskrift</h2>
           <svg class="svg-icon icon-print">
             <g fill-rule="nonzero">
@@ -236,7 +236,7 @@
         </a>
       </div>
       <div class="card-wrapper">
-        <a href="https://www.sio.no/mat-og-drikke/spisesteder-og-kaffebarer" class="card">
+        <a href="https://www.sio.no/mat-og-drikke/spisesteder-og-kaffebarer" class="card" id="js-track-dinner">
           <h2 class="headline">Middag</h2>
           <svg class="svg-icon icon-dinner">
             <g fill-rule="nonzero">
@@ -247,7 +247,7 @@
         </a>
       </div>
       <div class="card-wrapper">
-        <a href="https://app.uio.no/programvare/?access=student" class="card">
+        <a href="https://app.uio.no/programvare/?access=student" class="card" id="js-track-software">
           <h2 class="headline">Programvare</h2>
           <svg class="svg-icon icon-software">
             <g fill-rule="nonzero">
@@ -258,7 +258,7 @@
         </a>
       </div>
       <div class="card-wrapper">
-        <a href="https://view.uio.no/portal/webclient/index.html" class="card">
+        <a href="https://view.uio.no/portal/webclient/index.html" class="card" id="js-track-software-kiosk">
           <h2 class="headline">Programkiosk</h2>
           <svg class="svg-icon icon-kiosk">
             <g fill-rule="nonzero">
@@ -269,7 +269,7 @@
         </a>
       </div>
       <div class="card-wrapper">
-        <a href="http://www.ub.uio.no/" class="card">
+        <a href="http://www.ub.uio.no/" class="card" id="js-track-library">
           <h2 class="headline">Boksøk</h2>
           <svg class="svg-icon icon-book-search">
             <g fill-rule="nonzero">
@@ -280,7 +280,7 @@
         </a>
       </div>
       <div class="card-wrapper">
-        <a href="https://passord.uio.no/" class="card">
+        <a href="https://passord.uio.no/" class="card" id="js-track-password">
           <h2 class="headline">Skift passord</h2>
           <svg class="svg-icon icon-password">
             <g fill-rule="nonzero">
@@ -291,7 +291,7 @@
         </a>
       </div>
       <div class="card-wrapper">
-        <a href="https://www.sio.no/trening/gruppetrening/timeplan-og-booking" class="card">
+        <a href="https://www.sio.no/trening/gruppetrening/timeplan-og-booking" class="card" id="js-track-training">
           <h2 class="headline">Book trening</h2>
           <svg class="svg-icon icon-exercise">
             <g fill-rule="nonzero">
@@ -321,13 +321,13 @@
       </div>
       <div class="modal-content">
         <p>Neida. <strong>DUiO lagrer ingen data om deg</strong>. Lenkene er stort sett nøyaktig de samme som blir brukt av universitetet selv.</p>
-        <p>Om du er nysgjerrig, må du gjerne ta en titt på kildekoden på <a href="https://github.com/mortenvn/duio">Github</a>.</p>
+        <p>Om du er nysgjerrig, må du gjerne ta en titt på kildekoden på <a href="https://github.com/mortenvn/duio" id="js-track-github-repo">Github</a>.</p>
       </div>
       <div class="modal-header">
         <h2>Hvem har laget DUiO?</h2>
       </div>
       <div class="modal-content">
-        <p>Hei! Jeg heter <a href="http://mvn.no">Morten Noddeland</a>! Har du spørsmål, ris eller ros? Send meg en epost!</p>
+        <p>Hei! Jeg heter <a href="http://mvn.no" id="js-track-mvn">Morten Noddeland</a>! Har du spørsmål, ris eller ros? Send meg en epost!</p>
         <img src="email.svg" class="email-svg" alt="morten[alfakrøll]noddeland[punktum]no">
       </div>
     </div>
