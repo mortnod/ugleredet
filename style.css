@@ -228,6 +228,10 @@ header {
   margin-right: 10px;
 }
 
+.logo {
+  fill: #c91d1d !important;
+}
+
 .header-content {
   position: relative;
 }

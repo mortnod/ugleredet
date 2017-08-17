@@ -132,7 +132,9 @@ var Analytics = {
   sendEvent: function(category, action) {
     try {
       ga('send', 'event', category, action);
-    } catch(err){}
+    } catch(err){
+        console.error(err);
+    }
   },
 
   // Sends data to Analytics. If a 'selector' parameter is given,
@@ -144,6 +146,7 @@ var Analytics = {
     else {
       var eventTrigger = document.getElementById(selector);
       eventTrigger.onclick = function() {
+
         Analytics.sendEvent(category, action);
       }
     }
@@ -167,7 +170,7 @@ var Analytics = {
       // Small timeout to ensure that the event is tracked
       // before following the link
       setTimeout(function() {
-        document.location.href = eventTrigger.prop('href');
+        document.location.href = eventTrigger.getAttribute("href");
       }, 100);
 
     }
