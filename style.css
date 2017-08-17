@@ -10,8 +10,6 @@ body {
   font-family: 'PT Sans', sans-serif;
 }
 
-
-
 .wrapper {
   padding: 15px;
   margin: 0 auto;
@@ -59,9 +57,6 @@ body {
   margin-bottom: 15px;
   text-align: center;
 }
-
-
-
 
 
 
@@ -279,26 +274,32 @@ header {
 .modal {
   background-color: white;
   margin: auto;
-  max-width: 600px;
+  margin-bottom: 20px;
+  max-width: 500px;
   border-radius: 5px;
   box-shadow: 0 0 4px rgba(0,0,0,.7);
   transition: all 0.2 s;
+  text-align: center;
 }
 
-@media (max-width: 620px) {
-  .modal {
-    margin: 10px;
-  }
+.modal p {
+  margin-bottom: 10px;
 }
+
+.modal p:last-child {
+  margin-bottom: 0;
+}
+
 
 .modal-header {
   background-color: #f5f5f5;
   margin-top: 10px;
   padding: 10px 20px 5px;
-  border-bottom: 1px solid #ddd;
   border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   position: relative;
   overflow: hidden;
+  font-size: 20px;
 }
 
 .modal-header:first-child {
@@ -307,7 +308,27 @@ header {
 
 .modal-content {
   padding: 15px 20px;
+  font-size: 20px;
 }
+
+@media (max-width: 520px) {
+  .modal {
+    margin: 0 10px 10px 10px;
+  }
+
+  .modal-background {
+    padding-top: 0;
+  }
+
+  .modal-header {
+    font-size: 16px;
+  }
+
+  .modal-content {
+    font-size: 16px;
+  }
+}
+
 
 /* The Close Button */
 .close {
@@ -333,4 +354,24 @@ header {
   margin-left: auto;
   cursor: pointer;
   fill: #555;
+  transition: fill 0.1s;
+}
+
+.open-modal-button:hover {
+  fill: #333;
+}
+
+.email-svg {
+  margin-top: 10px;
+  max-width: 100%;
+}
+
+.modal a {
+  color: #aa1010;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+
+.modal a:hover {
+  border-color: #aa1010;
 }
