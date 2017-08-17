@@ -74,9 +74,10 @@ function getRandomTagline() {
 
 function setTagline() {
   tagline_string = getRandomTagline();
-  tagline_dom = document.getElementsByClassName('tagline')[0];
-
-  tagline_dom.innerHTML = tagline_string;
+  try {
+    tagline_dom = document.getElementsByClassName('tagline')[0];
+    tagline_dom.innerHTML = tagline_string;
+  } catch(err) {}
 }
 
 function activateModal() {

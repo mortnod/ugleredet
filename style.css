@@ -214,6 +214,7 @@ header {
 
 .brand {
   font-size: 38px;
+  line-height: 1;
 }
 
 .tagline {
@@ -229,11 +230,18 @@ header {
 
 .header-content {
   position: relative;
-  top: -5px;
+}
+
+.red-text {
+  color: #c91d1d;
+  font-weight: bold;
+  line-height: 1;
+  margin-left: 1px;
 }
 
 @media (max-width: 740px) {
-  .tagline {
+  .tagline,
+  .red-text {
     display: none;
   }
 
@@ -251,6 +259,7 @@ header {
     align-items: center;
     top: 0;
   }
+
 }
 
 
