@@ -1,61 +1,8 @@
-/* HELPER FUNCTIONS */
-function hasClass(el, className) {
-  if (el.classList)
-    return el.classList.contains(className)
-  else
-    return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'))
-}
-
-function addClass(el, className) {
-  if (el.classList)
-    el.classList.add(className)
-  else if (!hasClass(el, className)) el.className += " " + className
-}
-
-function removeClass(el, className) {
-  if (el.classList)
-    el.classList.remove(className)
-  else if (hasClass(el, className)) {
-    var reg = new RegExp('(\\s|^)' + className + '(\\s|$)')
-    el.className=el.className.replace(reg, ' ')
-  }
-}
-
-function fadeOut(el){
-  el.style.opacity = 1;
-
-  (function fade() {
-    if ((el.style.opacity -= .1) < 0) {
-      el.style.display = "none";
-    } else {
-      requestAnimationFrame(fade);
-    }
-  })();
-}
-
-function fadeIn(el, display){
-  el.style.opacity = 0;
-  el.style.display = display || "block";
-
-  (function fade() {
-    var val = parseFloat(el.style.opacity);
-    if (!((val += .1) > 1)) {
-      el.style.opacity = val;
-      requestAnimationFrame(fade);
-    }
-  })();
-}
-
 /* ACTUAL FUNCTIONS */
 function resizeCardHeight() {
-  cards = document.getElementsByClassName('card')
-
-  // We want the height to be equal to the width
-  height = cards[0].offsetWidth + 'px';
-
-  for (card of cards) {
-    card.style.height = height;
-  }
+  var $cards = $('.card');
+  card_width = $cards.outerWidth();
+  $cards.css('height', card_width);
 }
 
 function getRandomTagline() {
@@ -67,49 +14,45 @@ function getRandomTagline() {
     "Uhu-ggelig nyttige lenker",
   ];
 
-  n = Math.floor((Math.random() * taglines.length));
-
-  return taglines[n];
+  random_id = Math.floor((Math.random() * taglines.length));
+  return taglines[random_id];
 }
 
 function setTagline() {
-  tagline_string = getRandomTagline();
+  var random_tagline = getRandomTagline();
   try {
-    tagline_dom = document.getElementsByClassName('tagline')[0];
-    tagline_dom.innerHTML = tagline_string;
+    var $tagline = $('.tagline');
+    $tagline.text(random_tagline);
   } catch(err) {}
 }
 
 function activateModal() {
   // Get the modal
-  var modal = document.getElementById("modal-background");
+  var $modal = $('#modal-background');
 
   // Get the button that opens the modal
-  var open_button = document.getElementById("open_info_modal_button");
+  var $open_button = $('#open_info_modal_button');
 
   // Get the (x) that closes the modal
-  var close_button = document.getElementsByClassName("close")[0];
+  var $close_button = $("#js-close");
 
   // When the user clicks the button, open the modal
-  open_button.onclick = function() {
-    // addClass(modal, 'modal-visible');
-    fadeIn(modal);
+  $open_button.click(function () {
+    $modal.fadeIn();
     Analytics.sendEvent('Info Modal', 'Open Modal');
-  }
+  });
 
   // When the user clicks the close_button, close the modal
-  close_button.onclick = function() {
-    // removeClass(modal, 'modal-visible');
-    fadeOut(modal);
-  }
+  $close_button.click(function() {
+    $modal.fadeOut();
+  });
 
   // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      // removeClass(modal, 'modal-visible');
-      fadeOut(modal);
+  $(window).click(function(e) {
+    if (e.target == $modal[0]) {
+      $modal.fadeOut();
     }
-  }
+  });
 }
 
 var Analytics = {
@@ -145,19 +88,18 @@ var Analytics = {
       Analytics.sendEvent(category, action);
     }
     else {
-      var eventTrigger = document.getElementById(selector);
-      console.log(selector);
-      eventTrigger.onclick = function(e) {
+      var eventTrigger = $(selector);
+      eventTrigger.click(function(e) {
         Analytics.sendEvent(category, action);
-      }
+      });
     }
   },
 
   // Sends data to Analytics and redirects (after a slight delay)
   outboundEvent: function(category, action, selector) {
-    var eventTrigger = document.getElementById(selector);
+    var eventTrigger = $(selector);
 
-    eventTrigger.onclick = function(e) {
+    eventTrigger.click(function(e) {
       // Send tracking information to Google Analytics
       Analytics.sendEvent(category, action);
 
@@ -171,10 +113,10 @@ var Analytics = {
       // Small timeout to ensure that the event is tracked
       // before following the link
       setTimeout(function() {
-        document.location.href = eventTrigger.getAttribute("href");
+        document.location.href = eventTrigger.attr("href");
       }, 100);
 
-    }
+    });
   },
 
   createEventTrackers: function() {
@@ -198,20 +140,15 @@ var Analytics = {
   }
 };
 
-
-
 function main() {
   setTagline();
 
   resizeCardHeight();
-  window.addEventListener("resize", resizeCardHeight);
+  $(window).resize(resizeCardHeight);
 
   Analytics.init();
 
   activateModal();
-
 }
-
-
 
 main();
