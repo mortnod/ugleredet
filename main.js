@@ -38,19 +38,19 @@ function activateModal() {
 
   // When the user clicks the button, open the modal
   $open_button.click(function () {
-    $modal.fadeIn();
+    $modal.fadeIn(200);
     Analytics.sendEvent('Info Modal', 'Open Modal');
   });
 
   // When the user clicks the close_button, close the modal
   $close_button.click(function() {
-    $modal.fadeOut();
+    $modal.fadeOut(200);
   });
 
   // When the user clicks anywhere outside of the modal, close it
   $(window).click(function(e) {
     if (e.target == $modal[0]) {
-      $modal.fadeOut();
+      $modal.fadeOut(200);
     }
   });
 }
