@@ -94,6 +94,7 @@ function activateModal() {
   open_button.onclick = function() {
     // addClass(modal, 'modal-visible');
     fadeIn(modal);
+    Analytics.sendEvent('Info Modal', 'Open Modal');
   }
 
   // When the user clicks the close_button, close the modal
@@ -145,8 +146,8 @@ var Analytics = {
     }
     else {
       var eventTrigger = document.getElementById(selector);
-      eventTrigger.onclick = function() {
-
+      console.log(selector);
+      eventTrigger.onclick = function(e) {
         Analytics.sendEvent(category, action);
       }
     }
@@ -190,7 +191,8 @@ var Analytics = {
     this.outboundEvent('Main Links', 'Change Password', 'js-track-password');
     this.outboundEvent('Main Links', 'Book Training', 'js-track-training');
 
-    this.normalEvent('Info Modal', 'Show Modal', 'open_info_modal_button');
+    // this.normalEvent('Info Modal', 'Show Modal', 'open_info_modal_button');
+    // Open info modal is handled by activateModal()
     this.outboundEvent('Info Modal', 'Github', 'js-track-github-repo');
     this.outboundEvent('Info Modal', 'mvn.no', 'js-track-mvn');
   }
