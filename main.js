@@ -120,23 +120,23 @@ var Analytics = {
   },
 
   createEventTrackers: function() {
-    this.outboundEvent('Main Links', 'Fronter', 'js-track-fronter');
-    this.outboundEvent('Main Links', 'Email', 'js-track-email');
-    this.outboundEvent('Main Links', 'StudentWeb', 'js-track-studentweb');
-    this.outboundEvent('Main Links', 'Office 365', 'js-track-office365');
-    this.outboundEvent('Main Links', 'Schedule', 'js-track-schedule');
-    this.outboundEvent('Main Links', 'Print', 'js-track-print');
-    this.outboundEvent('Main Links', 'Dinner', 'js-track-dinner');
-    this.outboundEvent('Main Links', 'Software', 'js-track-software');
-    this.outboundEvent('Main Links', 'Software Kiosk', 'js-track-software-kiosk');
-    this.outboundEvent('Main Links', 'Library', 'js-track-library');
-    this.outboundEvent('Main Links', 'Change Password', 'js-track-password');
-    this.outboundEvent('Main Links', 'Book Training', 'js-track-training');
+    this.outboundEvent('Main Links', 'Fronter', '#js-track-fronter');
+    this.outboundEvent('Main Links', 'Email', '#js-track-email');
+    this.outboundEvent('Main Links', 'StudentWeb', '#js-track-studentweb');
+    this.outboundEvent('Main Links', 'Office 365', '#js-track-office365');
+    this.outboundEvent('Main Links', 'Schedule', '#js-track-schedule');
+    this.outboundEvent('Main Links', 'Print', '#js-track-print');
+    this.outboundEvent('Main Links', 'Dinner', '#js-track-dinner');
+    this.outboundEvent('Main Links', 'Software', '#js-track-software');
+    this.outboundEvent('Main Links', 'Software Kiosk', '#js-track-software-kiosk');
+    this.outboundEvent('Main Links', 'Library', '#js-track-library');
+    this.outboundEvent('Main Links', 'Change Password', '#js-track-password');
+    this.outboundEvent('Main Links', 'Book Training', '#js-track-training');
 
     // this.normalEvent('Info Modal', 'Show Modal', 'open_info_modal_button');
     // Open info modal is handled by activateModal()
-    this.outboundEvent('Info Modal', 'Github', 'js-track-github-repo');
-    this.outboundEvent('Info Modal', 'mvn.no', 'js-track-mvn');
+    this.outboundEvent('Info Modal', 'Github', '#js-track-github-repo');
+    this.outboundEvent('Info Modal', 'mvn.no', '#js-track-mvn');
   }
 };
 
