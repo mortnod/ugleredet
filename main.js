@@ -26,35 +26,6 @@ function setTagline() {
   } catch(err) {}
 }
 
-function activateModal() {
-  // Get the modal
-  var $modal = $('#modal-background');
-
-  // Get the button that opens the modal
-  var $open_button = $('#open_info_modal_button');
-
-  // Get the (x) that closes the modal
-  var $close_button = $("#js-close");
-
-  // When the user clicks the button, open the modal
-  $open_button.click(function () {
-    $modal.fadeIn(200);
-    Analytics.sendEvent('Info Modal', 'Open Modal');
-  });
-
-  // When the user clicks the close_button, close the modal
-  $close_button.click(function() {
-    $modal.fadeOut(200);
-  });
-
-  // When the user clicks anywhere outside of the modal, close it
-  $(window).click(function(e) {
-    if (e.target == $modal[0]) {
-      $modal.fadeOut(200);
-    }
-  });
-}
-
 var Analytics = {
   init: function() {
     this.initGoogleAnalytics();
@@ -140,15 +111,24 @@ var Analytics = {
   }
 };
 
+function activateModal() {
+  // leanModal v1.1 by Ray Stone - http://finelysliced.com.au
+  // Dual licensed under the MIT and GPL
+  (function($){$.fn.extend({leanModal:function(options){var defaults={top:100,overlay:0.5,closeButton:null};var overlay=$("<div id='lean_overlay'></div>");$("body").append(overlay);options=$.extend(defaults,options);return this.each(function(){var o=options;$(this).click(function(e){var modal_id=$(this).attr("href");$("#lean_overlay").click(function(){close_modal(modal_id)});$(o.closeButton).click(function(){close_modal(modal_id)});var modal_height=$(modal_id).outerHeight();var modal_width=$(modal_id).outerWidth();
+  $("#lean_overlay").css({"display":"block",opacity:0});$("#lean_overlay").fadeTo(200,o.overlay);$(modal_id).css({"display":"block","position":"absolute","opacity":0,"z-index":11000,"top":o.top+"px"});$(modal_id).fadeTo(200,1);e.preventDefault()})});function close_modal(modal_id){$("#lean_overlay").fadeOut(200);$(modal_id).css({"display":"none"})}}})})(jQuery);
+
+  $('#open-info-modal-button').leanModal({ top : 0, overlay: 0.7, closeButton: "#js-close" });
+}
+
 function main() {
   setTagline();
 
   resizeCardHeight();
   $(window).resize(resizeCardHeight);
 
-  Analytics.init();
-
   activateModal();
+
+  Analytics.init();
 }
 
 main();

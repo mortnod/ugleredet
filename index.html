@@ -167,12 +167,14 @@
         <p class="red-text">Du + UiO</p>
         <h1 class="brand">DUiO</h1>
       </div>
-      <svg class="svg-icon icon-info open-modal-button" id="open_info_modal_button">
-        <g fill-rule="nonzero">
-          <use xlink:href="#icon-info" class="svg-fill" fill-rule="evenodd"></use>
-          <use xlink:href="#icon-info" class="svg-inner-shadow" fill-opacity="1"></use>
-        </g>
-      </svg>
+      <a href="#about" id="open-info-modal-button" class="open-modal-button">
+        <svg class="svg-icon icon-info">
+          <g fill-rule="nonzero">
+            <use xlink:href="#icon-info" class="svg-fill" fill-rule="evenodd"></use>
+            <use xlink:href="#icon-info" class="svg-inner-shadow" fill-opacity="1"></use>
+          </g>
+        </svg>
+      </a>
     </div>
   </header>
 
@@ -313,35 +315,31 @@
     </div>
   </main>
 
-  <!-- The Modal -->
-  <div id="modal-background" class="modal-background">
-
-    <!-- Modal content -->
-    <div class="modal">
-      <div class="modal-header">
-        <h2>Hva er DUiO?</h2>
-        <span class="close" id="js-close">&times;</span>
-      </div>
-      <div class="modal-content">
-        <p>DUiO er en side for deg som UiO-student og inneholder direktelenker til ulike IT-tjenester. Noen av dem vil du trenge nesten daglig, andre vil være superpraktiske en gang iblant... Og noen blir kanskje aldri nyttige? 🤔</p>
-      </div>
-      <div class="modal-header">
-        <h2>Hmm. Dette virker suspekt...</h2>
-      </div>
-      <div class="modal-content">
-        <p>Neida. <strong>DUiO lagrer ingen data om deg</strong>. Lenkene er de samme som universitetet bruker selv.</p>
-        <p>Om du er nysgjerrig, må du gjerne ta en titt på kildekoden på <a href="https://github.com/mortenvn/duio.no" id="js-track-github-repo">Github</a>.</p>
-      </div>
-      <div class="modal-header">
-        <h2>Hvem har laget DUiO?</h2>
-      </div>
-      <div class="modal-content">
-        <p>Hei! Jeg heter <a href="http://mvn.no" id="js-track-mvn">Morten Noddeland</a> og er en informatikkstudent fra Asker. Har du spørsmål, ris eller ros? Send meg en epost!</p>
-        <img src="email.svg" class="email-svg" alt="morten[alfakrøll]noddeland[punktum]no">
-      </div>
+  <!-- Modal content -->
+  <div id="about" class="modal" rel="leanModal">
+    <div class="modal-header">
+      <h2>Hva er DUiO?</h2>
+      <span class="close" id="js-close">&times;</span>
     </div>
-
+    <div class="modal-content">
+      <p>DUiO er en side for deg som UiO-student og inneholder direktelenker til ulike IT-tjenester. Noen av dem vil du trenge nesten daglig, andre vil være superpraktiske en gang iblant... Og noen blir kanskje aldri nyttige? 🤔</p>
+    </div>
+    <div class="modal-header">
+      <h2>Hmm. Dette virker suspekt...</h2>
+    </div>
+    <div class="modal-content">
+      <p>Neida. <strong>DUiO lagrer ingen data om deg</strong>. Lenkene er de samme som universitetet bruker selv.</p>
+      <p>Om du er nysgjerrig, må du gjerne ta en titt på kildekoden på <a href="https://github.com/mortenvn/duio.no" id="js-track-github-repo">Github</a>.</p>
+    </div>
+    <div class="modal-header">
+      <h2>Hvem har laget DUiO?</h2>
+    </div>
+    <div class="modal-content">
+      <p>Hei! Jeg heter <a href="http://mvn.no" id="js-track-mvn">Morten Noddeland</a> og er en informatikkstudent fra Asker. Har du spørsmål, ris eller ros? Send meg en epost!</p>
+      <img src="email.svg" class="email-svg" alt="morten[alfakrøll]noddeland[punktum]no">
+    </div>
   </div>
+
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="main.js"></script>
 </body>
