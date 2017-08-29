@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="43px" height="43px" viewBox="0 0 43 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3 Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#EF6E6E" offset="0%"></stop>
+            <stop stop-color="#F25185" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-1.11022302e-14%" y1="50%" x2="100%" y2="50%" id="linearGradient-2">
+            <stop stop-color="#F5C83F" offset="0%"></stop>
+            <stop stop-color="#F3AE55" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-2.48949813e-15%" y1="50%" x2="100%" y2="50%" id="linearGradient-3">
+            <stop stop-color="#2DD5DA" offset="0%"></stop>
+            <stop stop-color="#00C1FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Modal" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-4" transform="translate(-22.000000, -15.000000)" stroke-width="0.5" fill-rule="nonzero">
+            <g id="Group-3-Copy" transform="translate(23.000000, 15.000000)">
+                <path d="M30.5,0 C27.26285,3.9641875 20,17.507875 20,23.375 C20,29.2431875 24.7019,34 30.5,34 C36.2981,34 41,29.2431875 41,23.375 C41,17.507875 33.6626,3.88875 30.5,0" id="raindrop-copy-2" stroke="#A73648" fill="url(#linearGradient-1)"></path>
+                <path d="M10.5,0 C7.26285,3.9641875 0,17.507875 0,23.375 C0,29.2431875 4.7019,34 10.5,34 C16.2981,34 21,29.2431875 21,23.375 C21,17.507875 13.6626,3.88875 10.5,0" id="raindrop" stroke="#B38928" fill="url(#linearGradient-2)"></path>
+                <path d="M20.5,8 C17.26285,11.9641875 10,25.507875 10,31.375 C10,37.2431875 14.7019,42 20.5,42 C26.2981,42 31,37.2431875 31,31.375 C31,25.507875 23.6626,11.88875 20.5,8" id="raindrop" stroke="#1096B1" fill="url(#linearGradient-3)"></path>
+            </g>
+        </g>
+    </g>
+</svg>
