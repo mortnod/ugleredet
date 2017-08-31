@@ -5,21 +5,37 @@ function resizeCardHeight() {
   $cards.css('height', card_width);
 }
 
-function getRandomTagline() {
-  var taglines = [
-    "Dekker alle dine behov som UiB-student... bortsett fra kaffe",
-    "UiBs IT-tjenester? Gotta know 'em all!",
-    "Du och jag, UiB. Du och jag...",
-    "Alle lenkene du trenger... og et par til",
-    "Uhu-ggelig nyttige lenker",
-  ];
+function getRandomTagline(university) {
+  var taglines = [];
+
+  if (university === 'uio') {
+    taglines = [
+      "Dekker alle dine behov som UiO-student... bortsett fra kaffe",
+      "UiOs IT-tjenester? Gotta know 'em all!",
+      "Du och jag, UiO. Du och jag...",
+      "Alle lenkene du trenger... og et par til",
+    ];
+  }
+
+  else if (university === 'uib') {
+    taglines = [
+      "Dekker alle dine behov som UiB-student... bortsett fra kaffe",
+      "UiBs IT-tjenester? Gotta know 'em all!",
+      "Du och jag, UiB. Du och jag...",
+      "Alle lenkene du trenger... og et par til",
+      "Uhu-ggelig nyttige lenker",
+    ];
+  }
+  else {
+    return '';
+  }
 
   random_id = Math.floor((Math.random() * taglines.length));
   return taglines[random_id];
 }
 
-function setTagline() {
-  var random_tagline = getRandomTagline();
+function setTagline(university) {
+  var random_tagline = getRandomTagline(university);
   try {
     var $tagline = $('.tagline');
     $tagline.text(random_tagline);
@@ -27,19 +43,25 @@ function setTagline() {
 }
 
 var Analytics = {
-  init: function() {
-    this.initGoogleAnalytics();
-    this.createEventTrackers();
+  init: function(university) {
+    this.initGoogleAnalytics(university);
+    this.createEventTrackers(university);
   },
 
-  initGoogleAnalytics: function() {
+  initGoogleAnalytics: function(university) {
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('set', 'anonymizeIp', true);
-    ga('create', 'UA-104769219-1', 'auto');
+    if (university === 'uio') {
+      ga('create', 'UA-104769219-1', 'auto');
+    }
+    else if (university === 'uib') {
+      ga('create', 'UA-105595845-1', 'auto');
+    }
+
     ga('send', 'pageview');
   },
 
@@ -52,18 +74,11 @@ var Analytics = {
     }
   },
 
-  // Sends data to Analytics. If a 'selector' parameter is given,
-  // set up a onClick listener for that selector
+  // Create event listener for analytics events
   normalEvent: function(category, action, selector) {
-    if (selector === undefined) {
+    $(selector).click(function(e) {
       Analytics.sendEvent(category, action);
-    }
-    else {
-      var eventTrigger = $(selector);
-      eventTrigger.click(function(e) {
-        Analytics.sendEvent(category, action);
-      });
-    }
+    });
   },
 
   // Sends data to Analytics and redirects (after a slight delay)
@@ -90,22 +105,34 @@ var Analytics = {
     });
   },
 
-  createEventTrackers: function() {
-    this.outboundEvent('Main Links', 'Fronter', '#js-track-fronter');
+  createEventTrackers: function(university) {
+    if (university === 'uio') {
+      this.outboundEvent('Main Links', 'Fronter', '#js-track-fronter');
+      this.outboundEvent('Main Links', 'Schedule', '#js-track-schedule');
+      this.outboundEvent('Main Links', 'Print', '#js-track-print');
+      this.outboundEvent('Main Links', 'Software Kiosk', '#js-track-software-kiosk');
+    }
+    else if (university === 'uib') {
+      this.outboundEvent('Main Links', 'Mitt UiB', '#js-track-mitt-uib');
+      this.outboundEvent('Main Links', 'Mazemap', '#js-track-mazemap');
+      this.outboundEvent('Main Links', 'Litteraturkiosken', '#js-track-litteraturkiosken');
+      this.normalEvent('Main Links', 'Print', '#js-track-print');
+
+      this.outboundEvent('Print Modal', 'Color print', '#js-track-color-print');
+      this.outboundEvent('Print Modal', 'Greyscale print', '#js-track-greyscale-print');
+      this.outboundEvent('Print Modal', 'Payprint', '#js-track-payprint');
+    }
+
     this.outboundEvent('Main Links', 'Email', '#js-track-email');
     this.outboundEvent('Main Links', 'StudentWeb', '#js-track-studentweb');
     this.outboundEvent('Main Links', 'Office 365', '#js-track-office365');
-    this.outboundEvent('Main Links', 'Schedule', '#js-track-schedule');
-    this.outboundEvent('Main Links', 'Print', '#js-track-print');
     this.outboundEvent('Main Links', 'Dinner', '#js-track-dinner');
     this.outboundEvent('Main Links', 'Software', '#js-track-software');
-    this.outboundEvent('Main Links', 'Software Kiosk', '#js-track-software-kiosk');
     this.outboundEvent('Main Links', 'Library', '#js-track-library');
     this.outboundEvent('Main Links', 'Change Password', '#js-track-password');
     this.outboundEvent('Main Links', 'Book Training', '#js-track-training');
 
-    // this.normalEvent('Info Modal', 'Show Modal', 'open_info_modal_button');
-    // Open info modal is handled by activateModal()
+    this.normalEvent('Info Modal', 'Show Modal', 'open_info_modal_button');
     this.outboundEvent('Info Modal', 'Github', '#js-track-github-repo');
     this.outboundEvent('Info Modal', 'mvn.no', '#js-track-mvn');
   }
@@ -120,18 +147,15 @@ function activateModal() {
   $('a[rel*=leanModal]').each(function() {
     $(this).leanModal({ top : 0, overlay: 0.7, closeButton: ".close" });
   });
-
 }
 
-function main() {
-  setTagline();
+function init(university) {
+  setTagline(university);
 
   resizeCardHeight();
   $(window).resize(resizeCardHeight);
 
   activateModal();
 
-  Analytics.init();
+  Analytics.init(university);
 }
-
-main();
