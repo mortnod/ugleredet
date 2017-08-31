@@ -118,8 +118,8 @@ var Analytics = {
       this.outboundEvent('Main Links', 'Litteraturkiosken', '#js-track-litteraturkiosken');
       this.normalEvent('Main Links', 'Print', '#js-track-print');
 
-      this.outboundEvent('Print Modal', 'Color print', '#js-track-color-print');
-      this.outboundEvent('Print Modal', 'Greyscale print', '#js-track-greyscale-print');
+      this.outboundEvent('Print Modal', 'Color print', '#js-track-print-color');
+      this.outboundEvent('Print Modal', 'Greyscale print', '#js-track-print-greyscale');
       this.outboundEvent('Print Modal', 'Payprint', '#js-track-payprint');
     }
 
