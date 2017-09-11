@@ -132,7 +132,7 @@ var Analytics = {
     this.outboundEvent('Main Links', 'Change Password', '#js-track-password');
     this.outboundEvent('Main Links', 'Book Training', '#js-track-training');
 
-    this.normalEvent('Info Modal', 'Show Modal', 'open_info_modal_button');
+    this.normalEvent('Info Modal', 'Show Modal', '#open-info-modal-button');
     this.outboundEvent('Info Modal', 'Github', '#js-track-github-repo');
     this.outboundEvent('Info Modal', 'mvn.no', '#js-track-mvn');
   }
