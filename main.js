@@ -5,37 +5,21 @@ function resizeCardHeight() {
   $cards.css('height', card_width);
 }
 
-function getRandomTagline(university) {
-  var taglines = [];
-
-  if (university === 'uio') {
-    taglines = [
-      "Dekker alle dine behov som UiO-student... bortsett fra kaffe",
-      "UiOs IT-tjenester? Gotta know 'em all!",
-      "Du och jag, UiO. Du och jag...",
-      "Alle lenkene du trenger... og et par til",
-    ];
-  }
-
-  else if (university === 'uib') {
-    taglines = [
+function getRandomTagline() {
+  var taglines = [
       "Dekker alle dine behov som UiB-student... bortsett fra kaffe",
       "UiBs IT-tjenester? Gotta know 'em all!",
       "Du och jag, UiB. Du och jag...",
       "Alle lenkene du trenger... og et par til",
       "Uhu-ggelig nyttige lenker",
     ];
-  }
-  else {
-    return '';
-  }
 
   random_id = Math.floor((Math.random() * taglines.length));
   return taglines[random_id];
 }
 
-function setTagline(university) {
-  var random_tagline = getRandomTagline(university);
+function setTagline() {
+  var random_tagline = getRandomTagline();
   try {
     var $tagline = $('.tagline');
     $tagline.text(random_tagline);
@@ -43,25 +27,19 @@ function setTagline(university) {
 }
 
 var Analytics = {
-  init: function(university) {
-    this.initGoogleAnalytics(university);
-    this.createEventTrackers(university);
+  init: function() {
+    this.initGoogleAnalytics();
+    this.createEventTrackers();
   },
 
-  initGoogleAnalytics: function(university) {
+  initGoogleAnalytics: function() {
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('set', 'anonymizeIp', true);
-    if (university === 'uio') {
-      ga('create', 'UA-104769219-1', 'auto');
-    }
-    else if (university === 'uib') {
-      ga('create', 'UA-105595845-1', 'auto');
-    }
-
+    ga('create', 'UA-105595845-1', 'auto');
     ga('send', 'pageview');
   },
 
@@ -105,24 +83,11 @@ var Analytics = {
     });
   },
 
-  createEventTrackers: function(university) {
-    if (university === 'uio') {
-      this.outboundEvent('Main Links', 'Fronter', '#js-track-fronter');
-      this.outboundEvent('Main Links', 'Schedule', '#js-track-schedule');
-      this.outboundEvent('Main Links', 'Print', '#js-track-print');
-      this.outboundEvent('Main Links', 'Software Kiosk', '#js-track-software-kiosk');
-    }
-    else if (university === 'uib') {
-      this.outboundEvent('Main Links', 'Mitt UiB', '#js-track-mitt-uib');
-      this.outboundEvent('Main Links', 'Mazemap', '#js-track-mazemap');
-      this.outboundEvent('Main Links', 'Litteraturkiosken', '#js-track-litteraturkiosken');
-      this.normalEvent('Main Links', 'Print', '#js-track-print');
-
-      this.outboundEvent('Print Modal', 'Color print', '#js-track-print-color');
-      this.outboundEvent('Print Modal', 'Greyscale print', '#js-track-print-greyscale');
-      this.outboundEvent('Print Modal', 'Payprint', '#js-track-payprint');
-    }
-
+  createEventTrackers: function() {
+    this.outboundEvent('Main Links', 'Mitt UiB', '#js-track-mitt-uib');
+    this.outboundEvent('Main Links', 'Mazemap', '#js-track-mazemap');
+    this.outboundEvent('Main Links', 'Litteraturkiosken', '#js-track-litteraturkiosken');
+    this.normalEvent('Main Links', 'Print', '#js-track-print');
     this.outboundEvent('Main Links', 'Email', '#js-track-email');
     this.outboundEvent('Main Links', 'StudentWeb', '#js-track-studentweb');
     this.outboundEvent('Main Links', 'Office 365', '#js-track-office365');
@@ -135,6 +100,10 @@ var Analytics = {
     this.normalEvent('Info Modal', 'Show Modal', '#open-info-modal-button');
     this.outboundEvent('Info Modal', 'Github', '#js-track-github-repo');
     this.outboundEvent('Info Modal', 'mvn.no', '#js-track-mvn');
+
+    this.outboundEvent('Print Modal', 'Color print', '#js-track-print-color');
+    this.outboundEvent('Print Modal', 'Greyscale print', '#js-track-print-greyscale');
+    this.outboundEvent('Print Modal', 'Payprint', '#js-track-payprint');
   }
 };
 
@@ -149,13 +118,13 @@ function activateModal() {
   });
 }
 
-function init(university) {
-  setTagline(university);
+function init() {
+  setTagline();
 
   resizeCardHeight();
   $(window).resize(resizeCardHeight);
 
   activateModal();
 
-  Analytics.init(university);
+  Analytics.init();
 }
